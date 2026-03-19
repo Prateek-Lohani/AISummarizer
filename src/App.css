@@ -182,3 +182,12 @@ body {
     0 8px 32px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(12px);
 }
+
+body::-webkit-scrollbar{
+  width:6px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+body::-webkit-scrollbar-thumb{
+  background-color: #A18BF9;
+}

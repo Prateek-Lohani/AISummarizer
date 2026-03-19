@@ -2,7 +2,7 @@ import {logo} from '../assets'
 
 const Hero = () => {
   return (
-    <header className='w-full px-6 py-4 flex justify-center items-center flex-col'>
+    <header className='w-full md:px-6 py-4 flex justify-center items-center flex-col'>
       <nav className='flex justify-between items-center w-full mb-10 pt-3'>
         <img src={logo} alt="Synapse logo" className='object-contain' />
         <button
@@ -29,7 +29,7 @@ const Hero = () => {
         digestible summary in seconds. Paste a URL and let GPT-4 do the reading.
       </h2>
 
-      <p className=' text-sm text-gray-400 tracking-wide'>
+      <p className='mt-2 text-sm text-indigo-300 tracking-wide'>
         Free to use · Open source · No sign-up required
       </p>
     </header>

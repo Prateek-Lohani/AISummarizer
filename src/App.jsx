@@ -5,10 +5,7 @@ import './App.css'
 const App = () => {
   return (
     <main>
-    <div className="main">
-        <div className="gradient"/>
-    </div>
-    <div className="app">
+    <div className="flex flex-col items-center">
         <Hero/>
         <Demo/>
     </div>

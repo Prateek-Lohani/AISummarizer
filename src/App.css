@@ -84,10 +84,6 @@ body {
   .main { padding: 0; }
 }
 
-/* ─── Layout ─────────────────────────────────────────────────────── */
-.app {
-  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
-}
 
 /* ─── Nav button ─────────────────────────────────────────────────── */
 .black_btn {

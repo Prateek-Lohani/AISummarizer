@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { copy, linkIcon, loader, tick } from "../assets";
 import { useLazyGetSummaryQuery } from "../services/article";
@@ -80,7 +80,7 @@ const Demo = () => {
             onChange={(e) => setArticle({ ...article, url: e.target.value })}
             onKeyDown={handleKeyDown}
             required
-            className='url_input peer' // When you need to style an element based on the state of a sibling element, mark the sibling with the peer class, and use peer-* modifiers to style the target element
+            className='url_input peer' 
           />
           <button
             type='submit'
@@ -105,7 +105,7 @@ const Demo = () => {
                   className='w-[40%] h-[40%] object-contain'
                 />
               </div>
-              <p className='flex-1 font-satoshi text-blue-700 font-medium text-sm truncate'>
+              <p className='flex-1 font-satoshi text-blue-500 font-medium text-sm truncate'>
                 {item.url}
               </p>
             </div>
@@ -121,7 +121,7 @@ const Demo = () => {
           <p className='font-inter font-bold text-black text-center'>
             Well, that wasn't supposed to happen...
             <br />
-            <span className='font-satoshi font-normal text-gray-700'>
+            <span className='font-satoshi font-normal text-gray-300'>
               {error?.data?.error}
             </span>
           </p>
@@ -132,7 +132,7 @@ const Demo = () => {
                 Article <span className='blue_gradient'>Summary</span>
               </h2>
               <div className='summary_box'>
-                <p className='font-inter font-medium text-sm text-gray-700'>
+                <p className='font-inter font-medium text-sm text-gray-300'>
                   {article.summary}
                 </p>
               </div>

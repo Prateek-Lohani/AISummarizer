@@ -2,10 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 
-  Note: The styles for this gradient grid background is heavily inspired by the creator of this amazing site (https://dub.sh) – all credits go to them! 
-*/
+/* ─── Design Tokens ─────────────────────────────────────────────── */
+:root {
+  --bg-base:        #080c14;
+  --bg-surface:     #212e45;
+  --bg-elevated:    #37393c;
+  --border:         rgba(99, 179, 237, 0.12);
+  --border-hover:   rgba(99, 179, 237, 0.35);
+  --accent-cyan:    #38bdf8;
+  --accent-indigo:  #818cf8;
+  --accent-violet:  #a78bfa;
+  --text-primary:   #e8f0fe;
+  --text-secondary: #94a3b8;
+  --glow-cyan:      rgba(56, 189, 248, 0.18);
+  --glow-indigo:    rgba(129, 140, 248, 0.15);
+}
 
+/* ─── Base ───────────────────────────────────────────────────────── */
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+}
+
+/* ─── Background mesh ────────────────────────────────────────────── */
 .main {
   width: 100vw;
   min-height: 100vh;
@@ -17,7 +36,7 @@
 }
 
 .main:before {
-  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
+  background: radial-gradient(circle, rgba(8, 12, 20, 0) 0, var(--bg-base) 100%);
   position: absolute;
   content: "";
   z-index: 2;
@@ -34,83 +53,136 @@
   width: 100%;
   height: 100%;
   top: 0;
-  opacity: 0.4;
-  filter: invert(1);
+  opacity: 0.07;
+  filter: invert(0);
 }
 
+/* ─── Gradient orbs ─────────────────────────────────────────────── */
 .gradient {
   height: fit-content;
   z-index: 3;
   width: 100%;
   max-width: 640px;
-  background-image: radial-gradient(
-      at 27% 37%,
-      hsla(215, 98%, 61%, 1) 0px,
-      transparent 0%
-    ),
-    radial-gradient(at 97% 21%, hsla(125, 98%, 72%, 1) 0px, transparent 50%),
-    radial-gradient(at 52% 99%, hsla(354, 98%, 61%, 1) 0px, transparent 50%),
-    radial-gradient(at 10% 29%, hsla(256, 96%, 67%, 1) 0px, transparent 50%),
-    radial-gradient(at 97% 96%, hsla(38, 60%, 74%, 1) 0px, transparent 50%),
-    radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
-    radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 1) 0px, transparent 50%);
+  background-image:
+    radial-gradient(at 27% 37%, hsla(200, 98%, 55%, 1) 0px, transparent 50%),
+    radial-gradient(at 97% 21%, hsla(245, 90%, 70%, 1) 0px, transparent 50%),
+    radial-gradient(at 52% 99%, hsla(265, 85%, 65%, 1) 0px, transparent 50%),
+    radial-gradient(at 10% 29%, hsla(220, 95%, 60%, 1) 0px, transparent 50%),
+    radial-gradient(at 97% 96%, hsla(195, 80%, 60%, 1) 0px, transparent 50%),
+    radial-gradient(at 33% 50%, hsla(230, 75%, 65%, 1) 0px, transparent 50%),
+    radial-gradient(at 79% 53%, hsla(255, 70%, 72%, 1) 0px, transparent 50%);
   position: absolute;
   content: "";
   width: 100%;
   height: 100%;
-  filter: blur(100px) saturate(150%);
+  filter: blur(120px) saturate(180%);
   top: 80px;
-  opacity: 0.15;
+  opacity: 0.18;
 }
 
 @media screen and (max-width: 640px) {
-  .main {
-    padding: 0;
-  }
+  .main { padding: 0; }
 }
 
-/* Tailwind Styles */
-
+/* ─── Layout ─────────────────────────────────────────────────────── */
 .app {
   @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
 
+/* ─── Nav button ─────────────────────────────────────────────────── */
 .black_btn {
-  @apply rounded-full border border-black bg-black py-1.5 px-5 text-sm text-white transition-all hover:bg-white hover:text-black;
+  @apply rounded-full py-1.5 px-5 text-sm font-medium transition-all duration-200;
+  background: var(--bg-elevated);
+  color: var(--accent-cyan);
+  border: 1px solid var(--border);
+}
+.black_btn:hover {
+  background: var(--glow-cyan);
+  border-color: var(--border-hover);
+  box-shadow: 0 0 16px var(--glow-cyan);
 }
 
+/* ─── Hero heading ───────────────────────────────────────────────── */
 .head_text {
-  @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl text-center;
+  @apply mt-5 text-5xl font-extrabold leading-[1.15] sm:text-6xl text-center;
+  color: var(--text-primary);
 }
 
+/* ─── Cyan–indigo gradient text ──────────────────────────────────── */
 .orange_gradient {
-  @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+  @apply bg-clip-text text-transparent;
+  background-image: linear-gradient(90deg, var(--accent-cyan) 0%, var(--accent-indigo) 50%, var(--accent-violet) 100%);
 }
 
+/* ─── Subheading ─────────────────────────────────────────────────── */
 .desc {
-  @apply mt-5 text-lg text-gray-600 sm:text-xl text-center max-w-2xl;
+  @apply mt-5 text-lg sm:text-xl text-center max-w-2xl;
+  color: var(--text-secondary);
 }
 
+/* ─── URL input ──────────────────────────────────────────────────── */
 .url_input {
-  @apply block w-full rounded-md border border-gray-200 bg-white py-2.5 pl-10 pr-12 text-sm shadow-lg font-satoshi font-medium focus:border-black focus:outline-none focus:ring-0;
+  @apply block w-full rounded-lg py-2.5 pl-10 pr-12 text-sm font-medium focus:outline-none focus:ring-0;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.url_input::placeholder { color: var(--text-secondary); }
+.url_input:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px var(--glow-cyan);
 }
 
+/* ─── Submit button ──────────────────────────────────────────────── */
 .submit_btn {
-  @apply hover:border-gray-700 hover:text-gray-700 absolute inset-y-0 right-0 my-1.5 mr-1.5 flex w-10 items-center justify-center rounded border border-gray-200 font-sans text-sm font-medium text-gray-400;
+  @apply absolute inset-y-0 right-0 my-1.5 mr-1.5 flex w-10 items-center justify-center rounded text-sm font-medium transition-all duration-200;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+}
+.submit_btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--border-hover);
+  background: var(--glow-cyan);
 }
 
+/* ─── Link card ──────────────────────────────────────────────────── */
 .link_card {
-  @apply p-3 flex justify-start items-center flex-row bg-white border border-gray-200 gap-3 rounded-lg cursor-pointer;
+  @apply p-3 flex justify-start items-center flex-row gap-3 rounded-xl cursor-pointer transition-all duration-200;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+}
+.link_card:hover {
+  border-color: var(--border-hover);
+  background: var(--bg-elevated);
+  box-shadow: 0 0 20px var(--glow-indigo);
 }
 
+/* ─── Copy button ────────────────────────────────────────────────── */
 .copy_btn {
-  @apply w-7 h-7 rounded-full bg-white/10 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur flex justify-center items-center cursor-pointer;
+  @apply w-7 h-7 rounded-full flex justify-center items-center cursor-pointer transition-all duration-200;
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+.copy_btn:hover {
+  background: var(--glow-cyan);
+  border-color: var(--border-hover);
 }
 
+/* ─── Blue gradient text (keep as cyan variant) ──────────────────── */
 .blue_gradient {
-  @apply font-black bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+  @apply font-black bg-clip-text text-transparent;
+  background-image: linear-gradient(90deg, var(--accent-cyan), var(--accent-indigo));
 }
 
+/* ─── Summary box ────────────────────────────────────────────────── */
 .summary_box {
-  @apply rounded-xl border border-gray-200 bg-white/20 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.2)] backdrop-blur p-4;
+  @apply rounded-2xl p-4;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  box-shadow:
+    inset 0 1px 0 rgba(99, 179, 237, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
 }
